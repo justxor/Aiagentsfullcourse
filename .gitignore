@@ -1,0 +1,50 @@
+# --- Секреты: самое важное в этом файле ------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+credentials*.json
+.secrets/
+
+# --- Артефакты прогонов агента ---------------------------------------
+runs/
+!runs/.gitkeep
+.agent/
+!.agent/README.md
+benchmarks/results/
+!benchmarks/results/.gitkeep
+# Базовые линии, наоборот, коммитятся: они точка отсчёта.
+!benchmarks/baselines/
+
+# --- Данные и индексы ------------------------------------------------
+.data/
+*.db
+*.sqlite
+*.sqlite3
+fixtures/replay/
+!fixtures/replay/.gitkeep
+
+# --- Python ----------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Изолированные воркспейсы агента ---------------------------------
+../ws-*
+.cache/
+
+# --- ОС и редакторы --------------------------------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
