@@ -6,6 +6,7 @@ SHELL := /bin/bash
 
 PY      ?= python3
 VENV    ?= .venv
+PYTHON  := $(if $(wildcard $(VENV)/bin/python),$(VENV)/bin/python,$(PY))
 RUNS    ?= 5
 WORKERS ?= 4
 SUITE   ?= main
@@ -38,7 +39,7 @@ help:  ## показать список команд
 ## ------------------------------------------------------------------ ##
 
 doctor:  ## проверить окружение: python, docker, ключи, права, модель
-	@$(PY) tools/doctor.py
+	@$(PYTHON) tools/doctor.py
 
 install:  ## создать venv и установить зависимости
 	@$(PY) -m venv $(VENV)
@@ -52,17 +53,17 @@ install:  ## создать venv и установить зависимости
 
 lab:  ## запустить лабораторную: make lab LAB=lab01 [TASK="..."]
 	@test -n "$(LAB)" || (echo "укажи LAB=lab01"; exit 1)
-	@$(PY) -m labs.$(LAB).starter.main $(if $(TASK),--task "$(TASK)",)
+	@$(PYTHON) -m labs.$(LAB).starter.main $(if $(TASK),--task "$(TASK)",) --live
 
 check:  ## проверка приёмки: make check LAB=lab01  (или make check m04 для модуля)
 	@test -n "$(LAB)" || (echo "укажи LAB=lab01 или m04"; exit 1)
-	@$(PY) -m pytest -q labs/$(LAB)/tests
+	@$(PYTHON) -m pytest -q labs/$(LAB)/tests
 
 hint:  ## следующая подсказка по лабораторной
-	@$(PY) tools/hint.py $(LAB)
+	@$(PYTHON) tools/hint.py $(LAB)
 
 solution:  ## показать эталон (только после трёх попыток)
-	@$(PY) tools/solution.py $(LAB)
+	@$(PYTHON) tools/solution.py $(LAB)
 
 diff:  ## сравнить своё решение с эталоном
 	@diff -u labs/$(LAB)/starter labs/$(LAB)/solution || true

@@ -51,7 +51,7 @@ class Budget:
     task: Task
     started: float = field(default_factory=time.monotonic)
     steps: int = 0
-    tokens: int = 0
+    tokens: int = 0 
     cost_usd: float = 0.0
     empty_steps: int = 0
     warned: bool = False
