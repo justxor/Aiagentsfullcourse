@@ -4,7 +4,7 @@
 SHELL := /bin/bash
 .DEFAULT_GOAL := help
 
-PY      ?= python3
+PY      ?= py
 VENV    ?= .venv
 RUNS    ?= 5
 WORKERS ?= 4
