@@ -229,8 +229,6 @@ def main(argv: list[str] | None = None) -> int:
     print(__package__)
     ap = argparse.ArgumentParser(description="Модуль 01: минимальное ядро агента")
     ap.add_argument("--task", default="прочитай файл \"C:\\Users\\User\\Desktop\\test.txt\" и выведи в ответе, что там написано, так же если там написана какая-то математическая задача реши")
-    ap.add_argument("--live", action="store_true",
-                    help="использовать реального провайдера вместо FakeLLM")
     ap.add_argument("--max-steps", type=int, default=16)
     ap.add_argument("--max-cost", type=float, default=0.50)
     args = ap.parse_args(argv)

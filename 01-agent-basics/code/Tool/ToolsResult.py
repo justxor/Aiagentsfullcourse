@@ -21,5 +21,3 @@ class ToolResult:
         parts.append("Повтор с теми же аргументами не поможет."
                      if not self.retryable else "Повтор возможен.")
         return " ".join(parts)
-
-print(__package__)

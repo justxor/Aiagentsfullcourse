@@ -8,7 +8,6 @@ from .ToolsResult import ToolResult
 MAX_TOOL_OUTPUT = 4000  # символов; всё лишнее обрезается с флагом truncated
 
 
-
 @dataclass
 class Tool:
     """Класс, описывающий конкретный инструмент"""
